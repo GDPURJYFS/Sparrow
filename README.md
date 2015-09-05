@@ -1,4 +1,5 @@
 # Sparrow
+
 Sparrow 是 QtQuick 开发安卓等手机应用的轻量级框架，包括一个 Sparrow 模块，和文档。
 
 ## 目录介绍
@@ -56,10 +57,14 @@ Project {
 }
 ```
 
+将本项目中的 Sparrow 文件夹整个复制到项目中。
+
 ### QtQuick Application 项目
 
 > 一般包含一个 `main.cpp` 文件
 
 使用 `QQmlEngine` 或者 `QQmlApplicationEngine` 的 `addImportPath(const QString& dir)` 函数导入模块路径。
 
-参考[`StandardQtOnAndroid`]()。
+也可以参照 Sparrow/qmldir 中的命令手写注册函数。
+
+参考[`StandardQtOnAndroid`](https://github.com/GDPURJYFS/StandardQtOnAndroid/)。
