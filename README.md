@@ -1,8 +1,12 @@
 # Sparrow
 
-Sparrow 是 QtQuick 开发安卓等手机应用的轻量级框架，包括一个 Sparrow 模块，和文档。
+`Sparrow` 是 `QtQuick` 开发安卓等手机应用的轻量级框架，包括一个纯 `qml` 模块和一个 `c++` 拓展模块。
 
 ## 目录介绍
+
+### qml 模块
+
+打开 `qml/Sparrow` 
 
 ```
 | qmldir
@@ -21,6 +25,24 @@ Sparrow 是 QtQuick 开发安卓等手机应用的轻量级框架，包括一个
 `UI.js` 以及带有 `+` 的文件夹是进行平台适配的常量。
 
 其他控件介绍查看[简单易用的页面栈框架](doc/readme.md)
+
+### c++ 模块
+
+打开 `Sparrow`
+
+```
+| Sparrow.pri
+| ... *.h
+| ... *.cpp
+```
+
+有若干头文件和源文件。是 Sparrow 模块的 c++ 部分，这部分可以不用编译。只是用于增强。
+
+打开 `android`
+
+直接到 `src/org/GDPURJYFS/Sparrow/QtNativeForAndroid.java`。这个是 Sparrow `c++` 模块中安卓平台的代码。在安卓项目中，将  `src/org/GDPURJYFS/Sparrow/QtNativeForAndroid.java` 直接复制到适合的位置。
+
+> Qt on Android 项目中一般可以由 QtCreator 生成一个 `andorid` 目录，直接将 `src/org/GDPURJYFS/Sparrow/QtNativeForAndroid.java` 复制到 `android` 中对应的路径下。
 
 ## 如何使用
 
@@ -57,14 +79,28 @@ Project {
 }
 ```
 
-将本项目中的 Sparrow 文件夹整个复制到项目中。
+将本项目中的 `qml` 目录下的 `Sparrow` 文件夹整个复制到项目的根目录下。
 
 ### QtQuick Application 项目
 
-> 一般包含一个 `main.cpp` 文件
+将 `qml`  目录下的 `Sparrow` 复制到项目中适当位置。
 
-使用 `QQmlEngine` 或者 `QQmlApplicationEngine` 的 `addImportPath(const QString& dir)` 函数导入模块路径。
+将 `Sparrow` 复制到项目的根目录下。
 
-也可以参照 Sparrow/qmldir 中的命令手写注册函数。
+> `Sparrow` 的 `qml` 模块可以用于其他项目中，与 `Sparrow` 的 `c++` 模块相互独立。
 
-参考[`StandardQtOnAndroid`](https://github.com/GDPURJYFS/StandardQtOnAndroid/)。
+---
+
+在项目的 `pro` 文件中添加这么一句：
+
+```pro
+include(Sparrow/Sparrow.pri)
+```
+
+> `Sparrow` 的 `c++` 模块可以用于其他项目中，与 `Sparrow` 的 `qml` 模块相互独立。
+
+在 `main.cpp` 中，使用 `QQmlEngine` 或者 `QQmlApplicationEngine` 的 `addImportPath(const QString& dir)` 函数导入模块路径。
+
+也可以参照 `qml/Sparrow/qmldir` 中的命令手写注册函数。
+
+参考 [`StandardQtOnAndroid`](https://github.com/GDPURJYFS/StandardQtOnAndroid/)。
