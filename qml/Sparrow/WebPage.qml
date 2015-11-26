@@ -23,13 +23,14 @@ void runJavaScript(script, callback)
 
 Page {
     id: webPage
-    property alias canGoBack: webView.canGoBack
-    property alias canGoForward: webView.canGoForward
-    property alias loadProgress: webView.loadProgress
-    property alias loading: webView.loading
+    readonly property alias canGoBack: webView.canGoBack
+    readonly property alias canGoForward: webView.canGoForward
+    readonly property alias loadProgress: webView.loadProgress
+    readonly property alias loading: webView.loading
     title: webView.title
     property alias url: webView.url
 
+    //@disable-check M324
     WebView {
         id: webView
         anchors.fill: parent

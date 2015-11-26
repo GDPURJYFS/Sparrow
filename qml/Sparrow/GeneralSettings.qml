@@ -22,7 +22,7 @@ QObject {
         var families  = Qt.fontFamilies();
         for(var iter in families) {
             if(iter === family) {
-                internal.fontFamily = family;
+                internal.generalfontFamily = family;
             }
         }
     }
@@ -34,7 +34,7 @@ QObject {
     }
 
     function resetFontFamily() {
-        internal.fontFamily = UI.defaultFontFamily;
+        internal.generalfontFamily = fontLoader.name;
     }
 
     //////////////////////////////////////////////////////////////////////////
@@ -43,7 +43,12 @@ QObject {
     QObject {
         id: internal
         property int generalFontPointSize: UI.StandardFontPointSize
-        property string generalfontFamily: UI.defaultFontFamily
+        property string generalfontFamily: fontLoader.name
+    }
+
+    FontLoader {
+        id: fontLoader
+        source: "./resources/NotoSansHans-DemiLight.otf"
     }
 
     /*! internal settings */
@@ -53,5 +58,9 @@ QObject {
         property alias generalFontPointSize: internal.generalFontPointSize
         property alias generalfontFamily: internal.generalfontFamily
     }
+
+//    Component.onCompleted: {
+//        internal.generalfontFamily = fontLoader.name;
+//    }
 }
 

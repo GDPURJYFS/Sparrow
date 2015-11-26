@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QRectF>
 
+class QtBridgingAndroid;
 class QtNativeForAndroid;
 class QInputMethod;
 
@@ -27,6 +28,9 @@ signals:
     void visibleChanged();
     void keyboardRectangleChanged(const QRectF& keyboardRectangle);
 
+protected slots:
+    void setKeyboardRectangle(const QRectF& keyboardRectangle);
+
 private slots:
     void onVisibleChangedChanged();
 
@@ -34,6 +38,7 @@ private:
     QInputMethod* m_inputMethod;
     QRectF m_keyboardRectangle;
     friend class QtNativeForAndroid;
+    friend class QtBridgingAndroid;
 };
 
 #endif // VIRTUALKEYBOARD_H

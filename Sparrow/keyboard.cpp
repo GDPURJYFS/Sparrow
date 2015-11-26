@@ -14,11 +14,6 @@ Keyboard::Keyboard(QObject *parent) :
     connect(this, SIGNAL(visibleChanged()), this, SLOT(onVisibleChangedChanged()));
 #endif
 
-#ifdef Q_OS_ANDROID
-    QAndroidJniObject::callStaticMethod<void>("org/GDPURJYFS/WellChat/NotificationClient",
-                                              "listenKeyboardHeight");
-    Q_SAFE_CALL_JAVA
-#endif
 }
 
 bool Keyboard::visible() const
@@ -46,11 +41,18 @@ Keyboard *Keyboard::singleton()
     return keyboard;
 }
 
+void Keyboard::setKeyboardRectangle(const QRectF &keyboardRectangle)
+{
+    if(this->keyboardRectangle() != keyboardRectangle) {
+        this->m_keyboardRectangle = keyboardRectangle;
+        emit keyboardRectangleChanged(this->m_keyboardRectangle);
+    }
+}
+
 void Keyboard::onVisibleChangedChanged()
 {
 #ifndef Q_OS_ANDROID
-    m_keyboardRectangle = m_inputMethod->keyboardRectangle();
-    emit keyboardRectangleChanged(m_keyboardRectangle);
+    this->setKeyboardRectangle(m_inputMethod->keyboardRectangle());
 #endif
 }
 
