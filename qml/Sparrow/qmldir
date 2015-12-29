@@ -11,7 +11,7 @@ Page 1.0 ./Page.qml
 BottomBar 1.0 ./BottomBar.qml
 TopBar 1.0 ./TopBar.qml
 
-
+SampleIcon 1.0 ./SampleIcon.qml
 SampleLabel 1.0 ./SampleLabel.qml
 SampleButton 1.0 ./SampleButton.qml
 SampleTextField 1.0 ./SampleTextField.qml

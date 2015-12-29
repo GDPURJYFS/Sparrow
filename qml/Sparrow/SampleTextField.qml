@@ -5,8 +5,15 @@ import QtQuick.Controls.Styles 1.4
 
 TextField {
     id: textField
+
     font.family: GeneralSettings.generalfontFamily
     font.pointSize: GeneralSettings.generalFontPointSize
+
+    // By a hexadecimal triplet or quad in the form "#RRGGBB" and "#AARRGGBB" respectively.
+    // For example, the color red corresponds to a triplet of "#FF0000"
+    // and a slightly transparent blue to a quad of "#800000FF".
+
+    property color backgroundColor: "#80ffffff"
 
     style: TextFieldStyle {
         id: style
@@ -14,6 +21,8 @@ TextField {
         renderType: Text.NativeRendering
         background: Rectangle {
             radius: 2
+            // a r g b
+            color: backgroundColor
             border.color: "#333"
             border.width: style.control.activeFocus ? 3 : 2
         }

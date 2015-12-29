@@ -3,6 +3,8 @@ import QtGraphicalEffects 1.0
 
 ShaderEffect {
     id: shaderEffect
+
+    // signal clicked();
     
     // Properties that will get bound to a uniform with the same name in the shader
     property color backgroundColor: "#10000000"
@@ -84,4 +86,5 @@ ShaderEffect {
     }
 
     Timer { id: touchEndTimer; interval: 125; onTriggered: shaderEffect.touchEnd() }
+    // Timer { id: clickedSender; interval: 200; onTriggered: shaderEffect.clicked();}
 }
