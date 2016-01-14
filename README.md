@@ -20,6 +20,7 @@
 | SampleLabel.qml
 | QObject.qml
 | UI.js
+| ...
 ```
 
 `UI.js` 以及带有 `+` 的文件夹是进行平台适配的常量。
@@ -104,3 +105,33 @@ include(Sparrow/Sparrow.pri)
 也可以参照 `qml/Sparrow/qmldir` 中的命令手写注册函数。
 
 参考 [`StandardQtOnAndroid`](https://github.com/GDPURJYFS/StandardQtOnAndroid/)。
+
+# TODO
+
+现阶段的 Sparrow 的 QML 模块处于 1.0 阶段。
+
+在 1.1 阶段
+
+1. 支持沉浸式（安卓 5.0 及以上支持，IOS 默认支持）
+
+    需要对 `Page` 以及 `PageStackWindow` 控件重新设计。
+
+2. 支持沉浸式和全屏的切换
+
+3. 提供良好的输入框。
+
+    由于 Qt 在安卓上的输入框有些许问题，直到 Qt 官方解决 Qt 应用窗体大小调整时闪烁的问题。预计版本或许是 Qt 5.7 解决吧，毕竟 Qt 5.7 是在 2016 年 Q2 放出。
+
+4. 提供一个简易的 Qt3D 支持控件，`Room3D` 和 `Page3D`。
+
+    其中，`Room3D` 包含一个最简单的场景和摄像头，必要的灯光。 `Page3D` 提供普通的 QML 元素和 `Qt3D::Entity` 的交互，例如动画。等至 Qt 5.7 正式放出 `Qt3D` 的时候，就可以有更多的支持了。
+
+4. 将提供良好的 C++ 扩展模块，例如 `I/O` 设备，更强大的网络套件(Sparrow.Network)。
+
+    由于 QML 中的 `XMLHttpRequest` 不能很好的处理 `Cookie`，好吧，其实是根本不能处理，既不能接受来自服务器的 `Cookie` 也不能设置 `Cookie`。所以将 Qt 的网络模块通过封装后，在 QML 中使用，Qt C++ 的网络模块本身是异步的，就不用担心阻塞 GUI 线程了。
+
+    另一个是将 `QIODevice` 及其子类进行封装，注册到 QML 中，这一个模块对 QML 的 GUI 线程是阻塞的，所以提供的功能会注意裁剪，毕竟这个模块是 `Sparrow.Network` 的附属模块。
+
+5. 提供更加良好的多线程及并发模块。
+
+     这一块要研究好久，就放到 Sparrow 2.0 模块吧。
