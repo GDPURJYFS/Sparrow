@@ -235,11 +235,10 @@ Rectangle {
 
     // not support the network qml resources
     // push(D, replace) => [A, B, D] - "replace" transition between C and D
-    function __PushPage(url, properties, replace){
+    function __PushPage(url, properties){
         var component = Qt.createComponent(url);
 
         properties = properties || { };
-        replace = replace || false;
 
         try {
             if(component.status === Component.Ready) {
