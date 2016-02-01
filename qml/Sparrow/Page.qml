@@ -1,5 +1,6 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.2
+import QtQuick.Window 2.2
 import Sparrow 1.0
 
 Rectangle {
@@ -29,9 +30,11 @@ Rectangle {
     property bool showTopBar: true
     property bool showBottomBar: true
 
-    property alias topBarArea: topBarParent
-    property alias bottomBarArea: bottomBarParent
-    property alias backgroundArea: backgroundParent
+    readonly property alias topBarArea: topBarParent
+    readonly property alias bottomBarArea: bottomBarParent
+    readonly property alias backgroundArea: backgroundParent
+
+    property alias topBarShadowVisible: topBarShadow.visible
 
     readonly property int applicationState: Qt.application.state
 
@@ -49,9 +52,36 @@ Rectangle {
                  return true;
              }
     */
+
+    // android
+    // 75 --> 1080 * 1920
+    // 50 --> 720 * 1280
+    // 38 --> 480 * 800
+    readonly property int systemStateBarHeight: {
+        if(Qt.platform.os == 'windows') {
+            return 20;
+        } else {
+            //
+            if(Qt.platform.os == 'android' &&
+                    // 全屏/沉浸式
+                    (Screen.height- Screen.desktopAvailableHeight) == 0 )
+            {
+                if(Screen.height <= 800) {
+                    return 38;
+                } else if(Screen.height <= 1280) {
+                    return 50
+                } else if(Screen.height <= 1920) {
+                    return 75
+                }
+            }
+            return 0;
+        }
+    }
+
     Loader {
         anchors.fill: parent
 
+        Binding { target: topBar; property: "anchors.bottom"; value: topBarParent.bottom }
         Binding { target: topBar; property: "parent"; value: topBarParent }
         Binding { target: bottomBar; property: "parent"; value: bottomBarParent }
         Binding { target: background; property: "parent"; value:  backgroundParent}
@@ -105,7 +135,7 @@ Rectangle {
 
         }
 
-        Item {
+        Rectangle {
             id: topBarParent
             anchors.top: parent.top
             anchors.topMargin: 0
@@ -114,6 +144,7 @@ Rectangle {
             // @disable-check M126
             height: children[0] != null ? children[0].height: 0
             clip: true
+            color: "transparent"
 
             state: "ShowTopBar"
 
@@ -165,7 +196,8 @@ Rectangle {
         //! [0]
         // TopBar Shadow Map
         Rectangle {
-            // visible: false
+            id: topBarShadow
+            visible: false
             anchors.top: topBarParent.bottom
             width: topBarParent.width
             height: topBarParent.height * 0.09
