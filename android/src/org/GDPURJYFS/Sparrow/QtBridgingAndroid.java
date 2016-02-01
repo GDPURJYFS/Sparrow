@@ -65,7 +65,7 @@ class SetStatusBarColorRunnable implements Runnable
 
 public class QtBridgingAndroid
 {   
-    public static Activity instanceActivity;
+    public static MainActivity instanceActivity;
     
     private static NotificationManager notificationManager;
     private static Notification.Builder builder;
@@ -93,6 +93,7 @@ public class QtBridgingAndroid
         }
     }
 
+    /*
     // allow Qt call this static function
     public static void notify(String notifyText)
     {
@@ -109,6 +110,7 @@ public class QtBridgingAndroid
         builder.setContentText(notifyText);
         notificationManager.notify(1, builder.build());
     }
+    */
     
     private static View getRootView(Activity context)
     {
@@ -161,7 +163,7 @@ public class QtBridgingAndroid
                                                         int width, int height);
     
     // Java call this method and init this static Bridge Class
-    public static void Init(Activity instanceActivity) {
+    public static void Init(MainActivity instanceActivity) {
         QtBridgingAndroid.instanceActivity = instanceActivity;
 
         System.out.println("QtBridgingAndroid::Init");
