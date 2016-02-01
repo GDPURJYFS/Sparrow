@@ -1,0 +1,30 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/Sparrow/BottomBar.qml</file>
+        <file>qml/Sparrow/ClickedShaderEffect.qml</file>
+        <file>qml/Sparrow/GeneralSettings.qml</file>
+        <file>qml/Sparrow/Page.qml</file>
+        <file>qml/Sparrow/PageStackWindow.qml</file>
+        <file>qml/Sparrow/qmldir</file>
+        <file>qml/Sparrow/QObject.qml</file>
+        <file>qml/Sparrow/SampleButton.qml</file>
+        <file>qml/Sparrow/SampleIcon.qml</file>
+        <file>qml/Sparrow/SampleLabel.qml</file>
+        <file>qml/Sparrow/SampleTextField.qml</file>
+        <file>qml/Sparrow/TopBar.qml</file>
+        <file>qml/Sparrow/Tracker.qml</file>
+        <file>qml/Sparrow/UI.js</file>
+        <file>qml/Sparrow/WebPage.qml</file>
+        <file>qml/Sparrow/+android/UI.js</file>
+        <file>qml/Sparrow/+android/WebPage.qml</file>
+        <file>qml/Sparrow/PopupLayer/PopupLayer.qml</file>
+        <file>qml/Sparrow/PopupLayer/PopupLayerDelegate.qml</file>
+        <file>qml/Sparrow/PopupLayer/PopupLayerTransition.qml</file>
+        <file>qml/Sparrow/PopupLayer/qmldir</file>
+        <file>qml/Sparrow/PopupLayer/readme.md</file>
+        <file>qml/Sparrow/PopupLayer/Delegate/PopupLayerBottomMenuDelegate.qml</file>
+        <file>qml/Sparrow/PopupLayer/Delegate/PopupLayerDialogDelegate.qml</file>
+        <file>qml/Sparrow/PopupLayer/Delegate/PopupLayerSideMenuDelegate.qml</file>
+        <file>qml/Sparrow/PopupLayer/Delegate/qmldir</file>
+    </qresource>
+</RCC>

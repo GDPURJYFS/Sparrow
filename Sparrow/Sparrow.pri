@@ -2,7 +2,6 @@ QT += core network sql qml
 
 android {
     QT += androidextras
-
 }
 
 HEADERS += \
@@ -20,7 +19,8 @@ SOURCES += \
     #$$PWD/qtnativeforandroid.cpp \
     $$PWD/qtbridgingandroid.cpp
 
-OTHER_FILES += $$PWD/../android/src/org/gdpurjyfs/sparrow/QtBridgingAndroid.java
-# $$PWD/../android/src/org/gdpurjyfs/sparrow/QtNativeForAndroid.java \
+INCLUDEPATH = $$PWD/../
 
-
+win32 {
+    RESOURCES += $$PWD/../sparrow_assets.qrc
+}
