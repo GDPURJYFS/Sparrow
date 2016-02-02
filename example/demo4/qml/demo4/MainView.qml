@@ -22,6 +22,13 @@ Page {
 
     id: page
     // 系统状态栏预留位置
+
+    focus: true
+    Keys.onBackPressed: {
+        event.accepted = true;
+        optionsMenu.close();
+    }
+
     topBarArea.height: topBar.height + systemStateBarHeight
     topBarArea.color: topBar.backgroundColor
 
@@ -48,6 +55,11 @@ Page {
         }
     }
 
+    background: Image {
+        anchors.fill: parent
+        source: "./images/tSTAY_0F78B3AF_0200.JPG"
+    }
+
     SampleButton {
         text: qsTr("打开")
         anchors.centerIn: parent
@@ -61,7 +73,5 @@ Page {
         id: optionsMenu
         parent: page
     }
-
-
 }
 

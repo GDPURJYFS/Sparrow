@@ -8,13 +8,16 @@ import QtQml.Models 2.2
 import Sparrow 1.0
 import Sparrow.PopupLayer 1.0
 import Sparrow.PopupLayer.Delegate 1.0
+import Sparrow.Utility 1.0
 
 import QtQuick.Dialogs 1.2
 
 import "./Component"
 
 PopupLayer {
+
     id: optionsMenu
+
     popupItem.width: parent.width * 0.8
     popupItem.height: parent.height
     popupItem.color: "#343434"
@@ -24,6 +27,8 @@ PopupLayer {
         popupItem: optionsMenu.popupItem
         maskItem: optionsMenu
     }
+
+    Lazyer { id: lazyer }
 
     Item {
         id: panel
@@ -62,34 +67,34 @@ PopupLayer {
             anchors.margins: parent.width * 0.1
             clip: true
 
-            model: menuObject
+            model: menuButtonModel
             spacing: parent.width * 0.1
-        }
-
-        ObjectModel {
-            id: menuObject
-            SampleButton {
-                width: popupItem.width * 0.7
-                anchors.horizontalCenter: listview.horizontalCenter
-                text: qsTr("首页")
-            }
-            SampleButton {
-                width: popupItem.width* 0.7
-                anchors.horizontalCenter: listview.horizontalCenter
-                text: qsTr("首页")
-            }
-            SampleButton {
-                width: popupItem.width* 0.7
-                anchors.horizontalCenter: listview.horizontalCenter
-                text: qsTr("首页")
-            }
-            SampleButton {
-                width: popupItem.width* 0.7
-                anchors.horizontalCenter: listview.horizontalCenter
-                text: qsTr("首页")
+            delegate: Item {
+                width: parent.width
+                height: button.height
+                SampleButton {
+                    id: button
+                    width: parent.width
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text: buttonText
+                    onClicked: {
+                        // 打开某页
+                        optionsMenu.close();
+                        lazyer.lazyDo(250, function() {
+                            optionsMenu.parent.__PushPage(Qt.resolvedUrl(gotoUrl));
+                        });
+                    }
+                }
             }
         }
 
+        ListModel {
+            id: menuButtonModel
+            ListElement {
+                buttonText: qsTr("图片浏览")
+                gotoUrl: "./BusinessPage/ImageViewerPage.qml"
+            }
+        }
     }
 }
 

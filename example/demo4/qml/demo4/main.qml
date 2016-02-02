@@ -12,10 +12,7 @@ PageStackWindow {
     title: qsTr("Translucent System Bar")
 
     initialPage: MainView {
-
+        pageStackWindow: mainWindow
     }
+
 }
-
-
-
-

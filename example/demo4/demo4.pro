@@ -32,3 +32,5 @@ ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 
 # include Sparrow
 include(../../Sparrow/Sparrow.pri)
+
+HEADERS +=
