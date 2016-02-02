@@ -26,5 +26,7 @@
         <file>qml/Sparrow/PopupLayer/Delegate/PopupLayerDialogDelegate.qml</file>
         <file>qml/Sparrow/PopupLayer/Delegate/PopupLayerSideMenuDelegate.qml</file>
         <file>qml/Sparrow/PopupLayer/Delegate/qmldir</file>
+        <file>qml/Sparrow/Utility/Lazyer.qml</file>
+        <file>qml/Sparrow/Utility/qmldir</file>
     </qresource>
 </RCC>

@@ -118,7 +118,7 @@ include(Sparrow/Sparrow.pri)
 
     需要对 `Page` 以及 `PageStackWindow` 控件重新设计。
 
-2. 支持沉浸式和全屏的切换
+2. 支持沉浸式和全屏的切换.
 
 3. 提供良好的输入框。
 
