@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/demo4/Component/MainListView.qml</file>
+        <file>qml/demo4/Component/SideBar.qml</file>
+        <file>qml/demo4/demo4.qmlproject</file>
+        <file>qml/demo4/main.qml</file>
+        <file>qml/demo4/MainView.qml</file>
+        <file>qml/demo4/BusinessPage/ImageExplorer.qml</file>
+        <file>qml/demo4/BusinessPage/ImageViewerPage.qml</file>
+        <file>qml/demo4/Component/CircularImage.qml</file>
+        <file>qml/demo4/images/tSTAY_0F78B3AF_0200.JPG</file>
+        <file>qml/demo4/images/日笠阳子 - 苍空のモノローグ.jpg</file>
+        <file>qml/demo4/MainViewSideMenu.qml</file>
+    </qresource>
+</RCC>
