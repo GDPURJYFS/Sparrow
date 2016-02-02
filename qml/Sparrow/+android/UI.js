@@ -7,7 +7,7 @@ var defaultFontFamily = "Noto Sans Hanunoo";
 
 var SmallFontPointSize = 20;
 //var StandardFontPointSize = 23;
-var StandardFontPointSize = 20;
+var StandardFontPointSize = 16;  // 18  20
 var BigFontPointSize = 25;
 var LargeFontPointSize = 28;
 var HugeFontPointSize = 30;
