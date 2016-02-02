@@ -136,7 +136,7 @@ PopupLayer{
     Item {
         anchors.fill: parent
         Button {
-            anchors.centenIn: parent
+            anchors.centerIn: parent
             text: "close"
             onClicked: {
                 optionsMenu.close();
