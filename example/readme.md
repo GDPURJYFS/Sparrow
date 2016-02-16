@@ -18,4 +18,14 @@
 
 [使用资源对象进行页面管理](demo3/readme.md)
 
+## demo4
+
+[设置沉浸式任务栏和侧边菜单栏](demo4/readme.md)
+
+## demo5
+
+[实现 QQ 侧边栏主页面](demo5/readme.md)
+
 > 注意，本项目文档转载请注明出处，作者是 qyvlik。
+
+
