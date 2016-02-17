@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
-
+import QtQuick.Controls 1.4
 import Sparrow 1.0
 
 import "./Component"
@@ -26,6 +26,11 @@ MainPage {
             id: topbar
             RowLayout {
                 anchors.fill: parent
+                SampleButton {
+                    text: qsTr("About")
+                    Layout.fillHeight: true
+                    Layout.margins: topbar.height * 0.1
+                }
             }
         }
 
@@ -49,12 +54,20 @@ MainPage {
                     anchors.left: parent.left
                     anchors.leftMargin: 10
                 }
-                MouseArea {
-                    anchors.fill: parent
+                SampleButton {
+                    text: "index:"+index
+                    anchors.centerIn: parent
                     onClicked: {
-                        console.log("ListView Item")
+                        console.log(index)
                     }
                 }
+
+//                MouseArea {
+//                    anchors.fill: parent
+//                    onClicked: {
+//                        console.log("ListView Item")
+//                    }
+//                }
             }
             width: parent.width
             height: parent.height
@@ -67,8 +80,13 @@ MainPage {
 
                 property Item swipeItem: mainPage
 
+                property bool isShow: false
+
+                startArea: Qt.rect(0, 0,
+                                   swipeArea.width*0.2, swipeArea.height)
+
                 // You can remove this Tracker
-                Tracker {}
+                //Tracker {}
 
                 NumberAnimation {
                     id: swipeAreaAnimation
@@ -88,6 +106,13 @@ MainPage {
                     if(needAnimation) {
                         animation.start();
                         swipeAreaAnimation.start();
+                        if(isShow) {
+                            startArea =Qt.rect(0, 0,
+                                               swipeArea.width, swipeArea.height)
+                        } else {
+                            startArea = Qt.rect(0, 0,
+                                                swipeArea.width*0.2, swipeArea.height)
+                        }
                     }
                 }
 
@@ -99,6 +124,7 @@ MainPage {
                         animation.to = swipeArea.swipeItem.width * 0.8;
                         swipeAreaAnimation.to = -swipeArea.swipeItem.width * 0.8;
                         needAnimation = true;
+                        isShow = true;
                     } else {
                         needAnimation = false;
                     }
@@ -118,6 +144,7 @@ MainPage {
                         animation.to = 0;
                         swipeAreaAnimation.to = 0;
                         needAnimation = true;
+                        isShow = false;
                     } else {
                         needAnimation = false;
                     }

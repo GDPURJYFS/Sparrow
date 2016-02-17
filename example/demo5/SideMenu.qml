@@ -19,8 +19,10 @@ Item {
     onIsShowChanged: {
         if(isShow) {
             sideMenu.z = mainPage.z + 1
+            sideMenu.enabled = true;
         } else {
             sideMenu.z = mainPage.z
+            sideMenu.enabled = false;
         }
     }
     

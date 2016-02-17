@@ -21,6 +21,7 @@ MouseArea::clicked -->
 
 ```
     property real diff: 1
+    property rect startArea: Qt.rect(0,0, width, height)
 
     signal rightToLeft(int offset)
     signal leftToRight(int offset)
@@ -41,6 +42,8 @@ MouseArea::clicked -->
 ```
 
 `diff` ：在鼠标按住且移动时，两点之间的距离差大于 `diff` 就可能触发 `rightToLeft` 等信号。
+
+`startArea` 是手势开始的区域。通过指定 `startArea` 可以有效处理鼠标事件传递（pressed,realeased,clicked）的问题。
 
 `rightToLeft` 等信号的参数 `offset`，意思是滑动的方向和本次滑动的距离 `offset`。
 

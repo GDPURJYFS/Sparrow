@@ -1,8 +1,14 @@
 import QtQuick 2.5
 
+/**
+ \note 使用 SwipeArea 控件，只能顺着父子关系向上传递 `clicked` 信号，不能传递 `pressed`
+       以及 `realeased` 信号
+*/
+
 MouseArea {
 
     property real diff: 1
+    property rect startArea: Qt.rect(0,0, width, height)
 
 
     signal rightToLeft(int offset)
@@ -15,6 +21,7 @@ MouseArea {
     property int orientation: Qt.Vertical
 
     propagateComposedEvents: true
+
 
     QtObject {
         id: internal
@@ -43,6 +50,15 @@ MouseArea {
                 //internal.moving = false;
             }
         }
+
+        function rectContains(rect, point) {
+
+            return rect.x <= point.x &&
+                    point.x <= (rect.x + rect.width)  &&
+
+                    rect.y <= point.y &&
+                     point.y <= (rect.y + rect.height) ;
+        }
     }
 
     onPositionChanged: {
@@ -70,14 +86,19 @@ MouseArea {
 
     onReleased: {
         internal.initOldPoint = false;
-        // 当不处于 Swipe 动作的时候，传递鼠标事件到父级。
+        // 当不处于 Swipe 动作的时候，传递鼠标事件 `clicked` 到父级。
         if(!internal.moving) {
             propagateComposedEvents = true;
         }
-        //console.log("SwipeArea Released")
+        mouse.accepted = false;
     }
 
     onPressed: {
+
+        if(!internal.rectContains(startArea, Qt.point(mouse.x, mouse.y))) {
+            mouse.accepted = false;
+            return;
+        }
 
         if(!internal.initOldPoint) {
             internal.oldPoint = Qt.point(mouse.x,
@@ -87,12 +108,6 @@ MouseArea {
         }
         internal.moving = false;
         propagateComposedEvents = false;
-
-        //console.log("SwipeArea Pressed")
-    }
-
-    onClicked: {
-        mouse.accepted = false;
     }
 
     function lockFlickableView(view) {
