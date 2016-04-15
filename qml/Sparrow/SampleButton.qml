@@ -1,8 +1,10 @@
 import QtQuick 2.5
 import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
-import QtGraphicalEffects 1.0
+
 import Sparrow 1.0
+
+import Sparrow.Utility 1.0
 
 Button {
     id: button
@@ -50,7 +52,9 @@ Button {
             shaderEffect.touchStart(mouse.x, mouse.y);
         }
 
-        onClicked: lazyClicked.start();
+        onClicked: {
+            lazyClicked.start();
+        }
     }
 
     Timer {
