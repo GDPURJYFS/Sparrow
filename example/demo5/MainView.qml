@@ -61,13 +61,6 @@ MainPage {
                         console.log(index)
                     }
                 }
-
-//                MouseArea {
-//                    anchors.fill: parent
-//                    onClicked: {
-//                        console.log("ListView Item")
-//                    }
-//                }
             }
             width: parent.width
             height: parent.height
