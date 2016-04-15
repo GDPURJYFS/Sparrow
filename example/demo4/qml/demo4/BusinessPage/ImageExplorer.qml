@@ -51,6 +51,7 @@ Page {
             while(iter++ < count) {
                 helperModel.append({"checked": false});
             }
+            console.log(" onFolderChanged model count:", count)
         }
 
         onCountChanged: {
@@ -59,6 +60,7 @@ Page {
             while(iter++ < count) {
                 helperModel.append({"checked": false});
             }
+            console.log("model count:", count)
         }
     }
 
@@ -103,6 +105,7 @@ Page {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
+                        console.log("folderModel count:", folderModel.count)
                         selectOne(fileURL);
                     }
                 }
@@ -131,9 +134,9 @@ Page {
         focus: true
         cellWidth: cellSize.width
         cellHeight: cellSize.height
-//        cacheBuffer: cellHeight * ApplicationSettings.gridViewBufferBlock
-//        displayMarginBeginning: cellHeight * 10
-//        displayMarginEnd: cellHeight * 10
+        //        cacheBuffer: cellHeight * ApplicationSettings.gridViewBufferBlock
+        //        displayMarginBeginning: cellHeight * 10
+        //        displayMarginEnd: cellHeight * 10
 
         model: folderModel
         delegate: imageDelegate

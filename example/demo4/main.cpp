@@ -13,6 +13,7 @@
 #include <Sparrow/qtbridgingandroid.h>
 #include <Sparrow/keyboard.h>
 
+
 int main(int argc, char *argv[])
 {
     //! [java register native function]
