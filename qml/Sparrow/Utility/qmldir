@@ -1,4 +1,5 @@
 module Utility
 
 Lazyer 1.0 ./Lazyer.qml
-
+Ticker 1.0 ./Ticker.qml
+Tracker 1.0 ./Tracker.qml
